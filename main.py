@@ -18,19 +18,20 @@ def isvalid(a):
 		return True
 	else:
 		return False
+		
 class mgcell():
-	genome = ""
+	genotypes = ""
 	def __init__(self, alleles):
 		if not isvalid(alleles):
 			raise Exception("invalid alleles")
-		self.genome = [alleles[:2], alleles[2:]]
+		self.genotypes = [alleles[:2], alleles[2:]]
 	def getgenes(self):
-		return (self.genome)
+		return (self.genotypes)
 	def repro(self, othercell):
 		if not isinstance(othercell, mgcell):
 			raise Exception("Attempted to reproduce with non-cell")
-		combolist = list(itertools.product(*self.genome))
-		combolist2 = list(itertools.product(*othercell.genome))
+		combolist = list(itertools.product(*self.genotypes))
+		combolist2 = list(itertools.product(*othercell.genotypes))
 		punnett_square = []
 		for parent1_comb in combolist:
 			for parent2_comb in combolist2:
